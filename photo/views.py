@@ -8,7 +8,7 @@ from django.shortcuts import render
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.urls import  reverse_lazy
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
 from mysite.views import OwnerOnlyMixin
 from photo.form import PhotoInlineFormSet
@@ -90,17 +90,40 @@ class AlbumPhotoCV(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        form.instance.ownr=self.request.user
+        form.instance.owner=self.request.user
         context=self.get_context_data()
         formset=context['formset']
         for photoform in formset:
             photoform.instance.owner=self.request.user
-        if formset.is_vaild():
+        if formset.is_valid():
             self.object=form.save()
             formset.instance=self.object
             formset.save()
-
             return redirect(self.get_success_url())
-
         else:
             return self.render_to_response(self.get_context_data(form=form))
+
+class AlbumPhotoUV(OwnerOnlyMixin, UpdateView):
+    model = Album
+    fields = ('name','description')
+    success_url = reverse_lazy('photo:index')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.POST:
+            context['formset'] = PhotoInlineFormSet(self.request.POST, self.request.FILES, instance=self.object)
+        else:
+            context['formset'] = PhotoInlineFormSet(instance=self.object)
+        return context
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        formset = context['formset']
+        if formset.is_valid():
+            self.object = form.save()
+            formset.instance = self.object
+            formset.save()
+            return redirect(self.get_success_url())
+        else:
+            return self.render_to_response(self.get_context_data(form=form))
+

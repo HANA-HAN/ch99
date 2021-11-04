@@ -12,11 +12,11 @@ urlpatterns=[
     path('search/', views.SearchFormView.as_view(), name='search'),
 
     path('album/add/', views.AlbumPhotoCV.as_view(), name='album_add'),
-    path('album/change/', views.AlbumChangeCV.as_view(), name='album_change'),
+    path('album/change/', views.AlbumChangeLV.as_view(), name='album_change'),
     path('album/<int:pk>/update/', views.AlbumPhotoUV.as_view(), name='album_update'),
     path('album/<int:pk>/delete/', views.AlbumDelV.as_view(), name='album_delete'),
     path('photo/add/', views.PhotoCV.as_view(), name='photo_add'),
-    path('photo/change/', views.PhotoChangeCV.as_view(), name='photo_change'),
+    path('photo/change/', views.PhotoChangeLV.as_view(), name='photo_change'),
     path('photo/<int:pk>/update/', views.PhotoUV.as_view(), name='photo_update'),
     path('photo/<int:pk>/delete/', views.PhotoDelV.as_view(), name='photo_delete'),
 
