@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}gwamok_detail.html{% endblock %}
+{% block content %}
+
+    <h1>{{object.title}}</h1>
+<br>
+<h5>
+   <div>
+       <span>학기 : {{object.semester}} </span>
+   </div>
+<br>
+   <div>
+       <span>과목명 : {{object.title}} </span>
+   </div>
+<br>
+   <div>
+       <span>담당교수 : {{object.professor}} </span>
+   </div>
+<br>
+   <div>
+       <span>요일 : {{object.day}} </span>
+   </div>
+<br>
+   <div>
+       <span>시간 : {{object.time}} </span>
+   </div>
+<br>
+   <div>
+       <span>강의실 : {{object.place}} </span>
+   </div>
+<br>
+   <div>
+       <span>수강가능인원 : {{object.avalnum}} </span>
+   </div>
+</h5>
+{% endblock %}

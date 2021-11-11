@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}gwamok_list.html{% endblock %}
+{% block content %}
+
+<br>
+    <div>
+        {% for gwamok in object_list %}
+        <li><a class="font h2" href="{% url 'gwamok:gwamok_detail' gwamok.id %}">{{gwamok}}</a>
+           &emsp; <span class="font-italic h5">{{gwamok.semester}} {{gwamok.professor}}</span>
+        </li>
+        <hr>
+        <br>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
