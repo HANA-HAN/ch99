@@ -41,7 +41,7 @@
                  <a class="nav-link dropdown-toggle text-white" href="#" data-toggle="dropdown">Sugang</a>
                <div class="dropdown-menu">
                    <a class="dropdown-item" href="{% url 'gwamok:index' %}">Gwamok</a>
-                    <a class="dropdown-item" href="">Sugang</a>
+                    <a class="dropdown-item" href="{% url 'gwamok:sugang_list' %}">Sugang</a>
                </div>
             </li>
 
@@ -71,11 +71,10 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'photo:album_add' %}">Album</a>
                     <a class="dropdown-item" href="{% url 'photo:photo_add' %}">Photo</a>
+               <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" href="{% url 'gwamok:gwamok_add' %}">Gwamok</a>
+                    <a class="dropdown-item" href="{% url 'gwamok:sugang_add' %}">Sugang</a>
                 </div>
-                <div class="dropdown-menu">
-                   <a class="dropdown-item" href="{% url 'gwamok:add' %}">Gwamok</a>
-                    <a class="dropdown-item" href="">Sugang</a>
-               </div>
             </li>
 
               <li class="nav-item dropdown mx-1 btn btn-primary">
