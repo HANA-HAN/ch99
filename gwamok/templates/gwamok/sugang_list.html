@@ -3,19 +3,20 @@
 {% block title %}sugang_list.html{% endblock %}
 {% block content %}
 
-<br>
+<div id="content">
+    <h1>Sugang List</h1>
+    <br>
     <div>
         <li>
-           <a href="{{ gwamok.get_absolute_url }}">
             {% for sugang in object_list %}
-            <a class="font h2" href="{% url 'gwamok:sugang_detail' sugang.gwamok %}">{{gwamok.title}}</a>
-           &emsp; <span class="font-italic h5">{{gwamok.semester}} {{gwamok.professor}} </span>
-        </a>
+            <a class="font h2" href="{% url 'gwamok:sugang_detail' sugang.id %}">{{gwamok}}</a>
+           &emsp; &emsp; <span class="font-italic h5">{{sugang.semester}} {{sugang.professor}} </span>
+            </a>
         </li>
         <hr>
         <br>
         {% endfor %}
     </div>
-
+</div>
 
 {% endblock %}
